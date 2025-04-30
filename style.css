@@ -1,0 +1,99 @@
+/* style.css */
+
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
+
+/* Card styling for exhibitions */
+.card {
+  width: 400px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-info {
+  font-size: 14px;
+  color: #666;
+}
+
+.card-link {
+  margin-top: 10px;
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* Button styling */
+#toggle-button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#toggle-button:hover {
+  background-color: #0056b3;
+}
+
+/* Calendar-specific styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  width: 14.28%;
+  height: 50px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.holiday {
+  background-color: yellow;
+}
+
+.adjusted-workday {
+  background-color: lightblue;
+}
