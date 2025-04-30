@@ -1,0 +1,63 @@
+[
+    {
+      "chinese_name": "元旦",
+      "english_name": "New Year's Day",
+      "dates_off": ["2025-01-01"],
+      "adjusted_workdays": []
+    },
+    {
+      "chinese_name": "春节",
+      "english_name": "Spring Festival (Chinese New Year)",
+      "dates_off": [
+        "2025-01-28",
+        "2025-01-29",
+        "2025-01-30",
+        "2025-01-31",
+        "2025-02-01",
+        "2025-02-02",
+        "2025-02-03",
+        "2025-02-04"
+      ],
+      "adjusted_workdays": ["2025-01-26", "2025-02-08"]
+    },
+    {
+      "chinese_name": "清明节",
+      "english_name": "Qingming Festival (Tomb Sweeping Day)",
+      "dates_off": ["2025-04-04", "2025-04-05", "2025-04-06"],
+      "adjusted_workdays": []
+    },
+    {
+      "chinese_name": "劳动节",
+      "english_name": "Labor Day",
+      "dates_off": [
+        "2025-05-01",
+        "2025-05-02",
+        "2025-05-03",
+        "2025-05-04",
+        "2025-05-05"
+      ],
+      "adjusted_workdays": ["2025-04-27"]
+    },
+    {
+      "chinese_name": "端午节",
+      "english_name": "Dragon Boat Festival",
+      "dates_off": ["2025-05-31", "2025-06-01", "2025-06-02"],
+      "adjusted_workdays": []
+    },
+    {
+      "chinese_name": "国庆节 / 中秋节",
+      "english_name": "National Day & Mid-Autumn Festival",
+      "dates_off": [
+        "2025-10-01",
+        "2025-10-02",
+        "2025-10-03",
+        "2025-10-04",
+        "2025-10-05",
+        "2025-10-06",
+        "2025-10-07",
+        "2025-10-08"
+      ],
+      "adjusted_workdays": ["2025-09-28", "2025-10-11"]
+    }
+  ]
+  
