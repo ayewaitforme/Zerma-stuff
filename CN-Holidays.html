@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Holidays</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px;
+      background-color: #f0f0f0;
+      min-height: 100vh;
+    }
+    #holidays {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+    }
+    .card {
+      width: 400px;
+      height: 200px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    .card-info {
+      font-size: 14px;
+      color: #666;
+    }
+    .card-link {
+      margin-top: 10px;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    .card-link:hover {
+      text-decoration: underline;
+    }
+    #toggle-button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #toggle-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div id="holidays"></div>
+<button id="toggle-button">See All Holidays</button>
+
+<script>
+  const today = new Date();
+  let showingAll = false;
+
+  async function loadHolidays(showAll = false) {
+    const res = await fetch('CN-Holidays.json');  // Updated to match your JSON file name
+    const holidays = await res.json();
+
+    const container = document.getElementById('holidays');
+    container.innerHTML = ''; // Clear old cards
+
+    let filteredHolidays = showAll
+      ? holidays
+      : holidays.filter(holiday => holiday.dates_off.some(date => new Date(date) >= today));
+
+    // Limit to 4 only when not showing all
+    if (!showAll) {
+      filteredHolidays = filteredHolidays.slice(0, 4);
+    }
+
+    if (filteredHolidays.length === 0) {
+      container.innerHTML = '<p>No upcoming holidays.</p>';
+      return;
+    }
+
+    filteredHolidays.forEach(holiday => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-title">${holiday.english_name} (${holiday.chinese_name})</div>
+        <div class="card-info">
+          Off Dates: ${holiday.dates_off.join(', ')}<br>
+          Adjusted Workdays: ${holiday.adjusted_workdays.length > 0 ? holiday.adjusted_workdays.join(', ') : 'None'}
+        </div>
+        <a class="card-link" href="#" target="_blank">Learn More</a>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  document.getElementById('toggle-button').addEventListener('click', () => {
+    showingAll = !showingAll;
+    loadHolidays(showingAll);
+    document.getElementById('toggle-button').textContent = showingAll
+      ? 'Show Upcoming Only'
+      : 'See All Holidays';
+  });
+
+  // Initial load: show upcoming holidays
+  loadHolidays();
+</script>
+
+</body>
+</html>
